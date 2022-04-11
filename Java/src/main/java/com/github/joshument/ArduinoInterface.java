@@ -54,7 +54,7 @@ public class ArduinoInterface {
         // In case of garbage output still in Serial buffer, flush it.
         serialPort.flush();
 
-        serialPort.writeString("VMX PINMODE " + pin + " " + mode.name());
+        serialPort.writeString("VMX PINMODE " + pin + " " + mode.toString() + '\n');
 
         // wait for output
         String code = new String();
@@ -98,8 +98,7 @@ public class ArduinoInterface {
         serialPort.flush();
 
         // All serial commands start with VMX as to distinguish them from any other serial calls.
-        serialPort.writeString("VMX DIGITALWRITE " + pin + " " + level.name());
-        System.out.println("VMX DIGITALWRITE " + pin + " " + level.name());
+        serialPort.writeString("VMX DIGITALWRITE " + pin + " " + level.toString() + '\n');
 
         // wait for output
         String code = new String();
@@ -132,7 +131,7 @@ public class ArduinoInterface {
         serialPort.flush();
 
         // All serial commands start with VMX as to distinguish them from any other serial calls.
-        serialPort.writeString("VMX DIGITALREAD " + pin );
+        serialPort.writeString("VMX DIGITALREAD " + pin + '\n');
 
         // wait for output
         String power = new String();
@@ -159,7 +158,7 @@ public class ArduinoInterface {
         serialPort.flush();
 
         // ALl serial commands start wth VMX as to distinguish them from any other serial calls.
-        serialPort.writeString("VMX ANALOGWRITE " + pin + " " + power);
+        serialPort.writeString("VMX ANALOGWRITE " + pin + " " + power + '\n');
 
         // wait for output
         String code = new String();
@@ -183,7 +182,7 @@ public class ArduinoInterface {
         serialPort.flush();
 
         // ALl serial commands start wth VMX as to distinguish them from any other serial calls.
-        serialPort.writeString("VMX ANALOG " + pin );
+        serialPort.writeString("VMX ANALOG " + pin + '\n');
         // wait for output
         String power = new String();
         while(true) {
