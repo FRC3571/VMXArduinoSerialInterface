@@ -1,6 +1,8 @@
 #define VMX_ONLY true
 #define MAX_COMMAND_SIZE 50
 
+#include <Arduino.h>
+
 char command[MAX_COMMAND_SIZE] = {};
 // using an index int is faster than going through the whole array every single time
 int cmdIndex = 0;
@@ -15,7 +17,7 @@ int parseCommand(char* command) {
     if (VMX_ONLY && strcmp(token, "VMX")) {
         return 2;
     }
-
+  
     token = strtok(NULL, " ");
 
     if (!strcmp(token, "PINMODE")) {
