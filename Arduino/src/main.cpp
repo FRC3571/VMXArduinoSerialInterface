@@ -26,8 +26,14 @@ int parseCommand(char* command) {
         int pin = atoi(strtok(NULL, " "));
         
         char* modeStr = strtok(NULL, " ");
-        int mode = !strcmp(modeStr, "OUTPUT") ? OUTPUT : 
-            !strcmp(modeStr, "INPUT") ? INPUT : INPUT_PULLUP;
+        int mode = !strcmp(modeStr, "OUTPUT") 
+            ? OUTPUT 
+            : !strcmp(modeStr, "INPUT") 
+                ? INPUT 
+                : !strcmp(modeStr, "INPUT_PULLUP") 
+                    ? INPUT_PULLUP 
+                    : NULL;
+        if (mode == NULL) return 4;
 
         pinMode(pin, mode);
     } else if (!strcmp(token, "DIGITALWRITE")) {
