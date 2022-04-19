@@ -32,8 +32,8 @@ int parseCommand(char* command) {
                 ? INPUT 
                 : !strcmp(modeStr, "INPUT_PULLUP") 
                     ? INPUT_PULLUP 
-                    : NULL;
-        if (mode == NULL) return 4;
+                    : -1;
+        if (mode == -1) return 4;
 
         pinMode(pin, mode);
     } else if (!strcmp(token, "DIGITALWRITE")) {
