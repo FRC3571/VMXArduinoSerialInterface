@@ -49,6 +49,18 @@ public class ArduinoInterface {
      * @param pin
      * @param mode
      * @return
+     * The error code of the operation.
+     * There are 6 possible values (although not all are implemented):
+     * <ul>
+     *  <li>0 = success</li>
+     *  <li>1 = character allocation failure</li>
+     *  <li>2 = command does not start with <strong>VMX</strong></li>
+     *  <li>3 = invalid pin</li>
+     *  <li>4 = invalid pin mode</li>
+     *  <li>5 = invalid command</li>
+     * </ul>
+     * In the case of a failure error code, inspection of the Serial Monitor may be necessary to properly debug.
+     * @see https://www.arduino.cc/reference/en/language/functions/digital-io/pinmode/
      */
     public int pinMode(int pin, PinMode mode) {
         // In case of garbage output still in Serial buffer, flush it.
